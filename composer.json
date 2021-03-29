@@ -1,0 +1,11 @@
+{
+    "name": "psancho/php_svg",
+    "description": "SVG utilities",
+    "license": "MIT",
+    "version": "0.1.0",
+    "autoload": {
+        "psr-4": {
+            "Psancho\\SvgTools\\": "src/"
+        }
+    }
+}
