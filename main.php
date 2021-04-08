@@ -6,7 +6,7 @@ try {
     $go = microtime(true);
     echo "manipulation SVG\n";
 
-    $filepath = dirname(__DIR__, 2) . "/mysvg.svg";
+    $filepath = __DIR__ . "/_mysvg.svg";
 
     $doc = new DOMDocument();
     $doc->load($filepath);
