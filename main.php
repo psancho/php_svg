@@ -1,6 +1,10 @@
 #!/usr/bin/env php
 <?php declare(strict_types = 1);
 
+require __DIR__ . '/vendor/autoload.php';
+
+use Psancho\SvgTools\Shape;
+
 try {
     echo "\n";
     $go = microtime(true);
@@ -18,13 +22,8 @@ try {
     /** @var DOMElement $elPath */
     foreach ($elPathList as $i => $elPath) {
         $pattern = $elPath->getAttribute('d');
-        $matches = [];
-        preg_match_all('/[a-zA-Z][^a-zA-Z]*/', $pattern, $matches);
-        $steps = $matches[0];
-        printf("path #%d: %d steps\n", $i + 1, count($steps));
-        foreach ($steps as $index => $step) {
-            # code...
-        }
+        $shape = new Shape($pattern);
+        printf("path #%d: %d steps\n", $i + 1, count($shape));
     }
 
 } catch (\Throwable $e) {
