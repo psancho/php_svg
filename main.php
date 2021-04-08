@@ -34,18 +34,6 @@ $duration = microtime(true) - $go;
 
 printf("%.2F ms\n", $duration * 1000);
 
-/*
-MoveTo                      M x y
-LineTo                      L x y
-Horizontal LineTo           H x y
-Vertical LineTo             V x y
-ClosePath                   Z
-CurveTo                     C x1 y1, x2 y2, x y
-Shorthand CurveTo           S x2 y2, x y
-Quadratic CurveTo           Q x1 y1, x y
-Shorthand Quadratic CurveTo T x y
-Elliptical Arc              A rx ry x-axis-rotation large-arc-flag sweep-flag x y
- */
 
 /*
 Design
