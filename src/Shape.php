@@ -29,10 +29,26 @@ class Shape implements Countable
     {
         $matches = [];
         $this->steps = [];
-        preg_match_all('/[a-zA-Z][^a-zA-Z]*/', $pattern, $matches);
+        $canonicPattern = static::canonize($pattern);
+        preg_match_all('/[a-zA-Z][^a-zA-Z]*/', $canonicPattern, $matches);
         foreach ($matches[0] as $patternStep) {
             array_push($this->steps, static::buildStep($patternStep));
         }
+    }
+
+    public static function canonize(string $pattern = ''): string
+    {
+        return preg_replace([
+            '/[ \t\n\r\v,]+/',
+            '/ ([A-Za-z])/',
+            '/([A-Za-z]) (?![A-Za-z])/',
+            '/ $/',
+        ], [
+            ' ',
+            '$1',
+            '$1',
+            '',
+        ], $pattern);
     }
 
     protected static function buildStep(string $patternStep = ''): ShapeStep
