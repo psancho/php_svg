@@ -6,7 +6,7 @@ use Psancho\SvgTools\ShapeStep;
 
 /**
  * path/@d S (Shorthand CurveTo)
- * 
+ *
  * S x2 y2, x y
  *
  * @category Tools

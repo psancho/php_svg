@@ -6,7 +6,7 @@ use Psancho\SvgTools\ShapeStep;
 
 /**
  * path/@d T (Shorthand Quadratic CurveTo)
- * 
+ *
  * T x y
  *
  * @category Tools

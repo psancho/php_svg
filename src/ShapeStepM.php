@@ -6,7 +6,7 @@ use Psancho\SvgTools\ShapeStep;
 
 /**
  * path/@d M (MoveTo)
- * 
+ *
  * M x y
  *
  * @category Tools
