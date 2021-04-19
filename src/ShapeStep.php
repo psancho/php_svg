@@ -34,10 +34,13 @@ class ShapeStep
             throw new UnexpectedValueException(sprintf("MoveTo: expected a multiple of %d args, found %d.",
                 static::$expectedArgCount, $this->argCount));
         }
+
         if ($this->argCount > static::$expectedArgCount) {
             $stepPrev = $this->type . implode(' ', array_slice($this->argSequence, 0, $this->argCount - static::$expectedArgCount));
             $this->previous = new static($stepPrev, $previous);
             $this->argSequence = array_slice($this->argSequence, -static::$expectedArgCount);
+            $this->argCount = count($this->argSequence);
+            $this->step = $this->type . implode(' ', $this->argSequence);
         }
 
         $this->absolute = $this->type < 'a';
