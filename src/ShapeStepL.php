@@ -6,7 +6,7 @@ use Psancho\SvgTools\ShapeStep;
 
 /**
  * path/@d L (LineTo)
- * 
+ *
  * L x y
  *
  * @category Tools
@@ -14,4 +14,5 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepL extends ShapeStep
 {
+    protected static int $expectedArgCount = 2;
 }

@@ -14,4 +14,5 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepS extends ShapeStep
 {
+    protected static int $expectedArgCount = 4;
 }

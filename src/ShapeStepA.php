@@ -6,7 +6,7 @@ use Psancho\SvgTools\ShapeStep;
 
 /**
  * path/@d A (Elliptical Arc)
- * 
+ *
  * A rx ry x-axis-rotation large-arc-flag sweep-flag x y
  *
  * @category Tools
@@ -14,4 +14,5 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepA extends ShapeStep
 {
+    protected static int $expectedArgCount = 7;
 }

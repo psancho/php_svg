@@ -3,6 +3,7 @@
 namespace Psancho\SvgTools;
 
 use Psancho\SvgTools\ShapeStep;
+use UnexpectedValueException;
 
 /**
  * path/@d M (MoveTo)
@@ -14,4 +15,5 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepM extends ShapeStep
 {
+    protected static int $expectedArgCount = 2;
 }

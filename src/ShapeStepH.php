@@ -6,12 +6,13 @@ use Psancho\SvgTools\ShapeStep;
 
 /**
  * path/@d H (Horizontal LineTo)
- * 
- * H x y
+ *
+ * H x
  *
  * @category Tools
  * @package  SvgTools
 */
 class ShapeStepH extends ShapeStep
 {
+    protected static int $expectedArgCount = 1;
 }

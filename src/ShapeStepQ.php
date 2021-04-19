@@ -6,7 +6,7 @@ use Psancho\SvgTools\ShapeStep;
 
 /**
  * path/@d Q (Quadratic CurveTo)
- * 
+ *
  * Q x1 y1, x y
  *
  * @category Tools
@@ -14,4 +14,5 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepQ extends ShapeStep
 {
+    protected static int $expectedArgCount = 4;
 }
