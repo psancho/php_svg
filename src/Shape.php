@@ -31,9 +31,13 @@ class Shape implements Countable
         $this->steps = [];
         $canonicPattern = static::canonize($pattern);
         preg_match_all('/[a-zA-Z][^a-zA-Z]*/', $canonicPattern, $matches);
+        $step = null;
         foreach ($matches[0] as $patternStep) {
-            $prev = end($this->steps) ?: null;
-            array_push($this->steps, static::buildStep($patternStep, $prev));
+            $step = static::buildStep($patternStep, $step);
+        }
+        $this->steps = [$step];
+        while ($step = $step->previous) {
+            array_unshift($this->steps, $step);
         }
     }
 
