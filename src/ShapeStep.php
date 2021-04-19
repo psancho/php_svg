@@ -11,12 +11,13 @@ namespace Psancho\SvgTools;
 class ShapeStep
 {
     protected array $argSequence;
+    protected int $argCount;
+    protected string $type;
 
     public function __construct(public string $step = '', public ?self $previous = null)
     {
-        $this->argSequence = explode(' ', substr($step, 1));
-
-        $pipi = (substr($step, 0, 1));
-        $caca = count($this->argSequence);
+        $this->type = (substr($step, 0, 1));
+        $this->argSequence = strlen($step) > 1 ? explode(' ', substr($step, 1)) : [];
+        $this->argCount = count($this->argSequence);
     }
 }
