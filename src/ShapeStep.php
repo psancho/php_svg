@@ -12,7 +12,7 @@ class ShapeStep
 {
     protected array $argSequence;
 
-    public function __construct(public string $step = '')
+    public function __construct(public string $step = '', public ?self $previous = null)
     {
         $this->argSequence = explode(' ', substr($step, 1));
 
