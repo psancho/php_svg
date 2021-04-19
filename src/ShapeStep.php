@@ -2,6 +2,7 @@
 
 namespace Psancho\SvgTools;
 
+use Psancho\SvgTools\Point;
 use UnexpectedValueException;
 
 /**
@@ -14,6 +15,10 @@ class ShapeStep
 {
     protected array $argSequence;
     protected int $argCount;
+    protected bool $absolute;
+    protected Point $start;
+    protected Point $end;
+    protected Point $diff;
     protected string $type;
 
     protected static int $expectedArgCount = 0;
@@ -33,6 +38,19 @@ class ShapeStep
             $stepPrev = $this->type . implode(' ', array_slice($this->argSequence, 0, $this->argCount - static::$expectedArgCount));
             $this->previous = new static($stepPrev, $previous);
             $this->argSequence = array_slice($this->argSequence, -static::$expectedArgCount);
+        }
+
+        $this->absolute = $this->type < 'a';
+        if ($this->previous) {
+            $this->start = $this->previous->end;
+        }
+        $this->start = $this->previous ? $this->previous->end : new Point;
+        if ($this->absolute) {
+            $this->end = new Point;
+            $this->diff = $this->end->substract($this->start);
+        } else {
+            $this->diff = new Point;
+            $this->end = $this->start->add($this->diff);
         }
     }
 }
