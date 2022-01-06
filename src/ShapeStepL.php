@@ -16,4 +16,6 @@ class ShapeStepL extends ShapeStep
 {
     protected static string $shapeName = 'LineTo';
     protected static int $expectedArgCount = 2;
+    protected static int $indexEndX = 0;
+    protected static int $indexEndY = 1;
 }

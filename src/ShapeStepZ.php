@@ -13,4 +13,9 @@ use Psancho\SvgTools\ShapeStep;
 class ShapeStepZ extends ShapeStep
 {
     protected static string $shapeName = 'ClosePath';
+
+    public function getFinalPoint(): Point
+    {
+        return clone $this->start;
+    }
 }

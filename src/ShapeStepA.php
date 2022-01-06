@@ -16,4 +16,6 @@ class ShapeStepA extends ShapeStep
 {
     protected static string $shapeName = 'Elliptical Arc';
     protected static int $expectedArgCount = 7;
+    protected static int $indexEndX = 5;
+    protected static int $indexEndY = 6;
 }

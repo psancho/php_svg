@@ -23,6 +23,8 @@ class ShapeStep
 
     protected static string $shapeName = '';
     protected static int $expectedArgCount = 0;
+    protected static int $indexEndX = 0;
+    protected static int $indexEndY = 0;
 
     public function __construct(public string $step = '', public ?self $previous = null)
     {
@@ -47,11 +49,25 @@ class ShapeStep
         $this->absolute = $this->type < 'a';
         $this->start = $this->previous ? $this->previous->end : new Point;
         if ($this->absolute) {
-            $this->end = new Point;
+            $this->end = $this->getFinalPoint();
             $this->diff = $this->end->substract($this->start);
         } else {
-            $this->diff = new Point;
+            $this->diff = $this->getFinalPoint();
             $this->end = $this->start->add($this->diff);
         }
+    }
+
+    public function getFinalPoint(): Point
+    {
+        return new Point(
+            self::strToNumber($this->argSequence[static::$indexEndX]),
+            self::strToNumber($this->argSequence[static::$indexEndY])
+        );
+    }
+
+    protected static function strToNumber(string $str): int|float
+    {
+        $int = intval($str);
+        return (strval($int) === $str) ? $int : floatval($str);
     }
 }

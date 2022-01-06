@@ -16,4 +16,6 @@ class ShapeStepQ extends ShapeStep
 {
     protected static string $shapeName = 'Quadratic CurveTo';
     protected static int $expectedArgCount = 4;
+    protected static int $indexEndX = 2;
+    protected static int $indexEndY = 3;
 }

@@ -16,4 +16,14 @@ class ShapeStepH extends ShapeStep
 {
     protected static string $shapeName = 'Horizontal LineTo';
     protected static int $expectedArgCount = 1;
+    protected static int $indexEndX = 0;
+
+    public function getFinalPoint(): Point
+    {
+        $y = $this->absolute ? $this->previous->end->y : 0;
+        return new Point(
+            self::strToNumber($this->argSequence[static::$indexEndX]),
+            $y
+        );
+    }
 }

@@ -17,4 +17,6 @@ class ShapeStepM extends ShapeStep
 {
     protected static string $shapeName = 'MoveTo';
     protected static int $expectedArgCount = 2;
+    protected static int $indexEndX = 0;
+    protected static int $indexEndY = 1;
 }
