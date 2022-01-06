@@ -19,10 +19,14 @@ try {
 
     echo "trouvé $elPathList->length eléments path\n";
 
+    $shapes = [];
     /** @var DOMElement $elPath */
     foreach ($elPathList as $i => $elPath) {
         $pattern = $elPath->getAttribute('d');
-        $shape = new Shape($pattern);
+        $shapes[] = new Shape($pattern);
+    }
+
+    foreach ($shapes as $i => $shape) {
         printf("path #%d: %d steps\n", $i + 1, count($shape));
     }
 
