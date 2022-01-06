@@ -12,4 +12,5 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepZ extends ShapeStep
 {
+    protected static string $shapeName = 'ClosePath';
 }

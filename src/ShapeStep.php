@@ -21,6 +21,7 @@ class ShapeStep
     protected Point $diff;
     protected string $type;
 
+    protected static string $shapeName = '';
     protected static int $expectedArgCount = 0;
 
     public function __construct(public string $step = '', public ?self $previous = null)
@@ -31,8 +32,8 @@ class ShapeStep
         if ((static::$expectedArgCount === 0 && $this->argCount !== 0)
             || (static::$expectedArgCount !== 0 && $this->argCount % static::$expectedArgCount)
         ) {
-            throw new UnexpectedValueException(sprintf("MoveTo: expected a multiple of %d args, found %d.",
-                static::$expectedArgCount, $this->argCount));
+            throw new UnexpectedValueException(sprintf("%s: expected a multiple of %d args, found %d.",
+                static::$shapeName, static::$expectedArgCount, $this->argCount));
         }
 
         if ($this->argCount > static::$expectedArgCount) {
@@ -44,9 +45,6 @@ class ShapeStep
         }
 
         $this->absolute = $this->type < 'a';
-        if ($this->previous) {
-            $this->start = $this->previous->end;
-        }
         $this->start = $this->previous ? $this->previous->end : new Point;
         if ($this->absolute) {
             $this->end = new Point;

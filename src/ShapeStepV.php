@@ -14,5 +14,6 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepV extends ShapeStep
 {
+    protected static string $shapeName = 'Vertical LineTo';
     protected static int $expectedArgCount = 1;
 }

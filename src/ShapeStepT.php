@@ -14,5 +14,6 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepT extends ShapeStep
 {
+    protected static string $shapeName = 'Shorthand Quadratic CurveTo';
     protected static int $expectedArgCount = 2;
 }

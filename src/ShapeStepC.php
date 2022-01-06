@@ -14,5 +14,6 @@ use Psancho\SvgTools\ShapeStep;
 */
 class ShapeStepC extends ShapeStep
 {
+    protected static string $shapeName = 'EllipticalArc';
     protected static int $expectedArgCount = 6;
 }
