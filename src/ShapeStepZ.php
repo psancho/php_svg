@@ -16,6 +16,7 @@ class ShapeStepZ extends ShapeStep
 
     public function getFinalPoint(): Point
     {
+        // TODO last MoveTo
         return clone $this->start;
     }
 }
