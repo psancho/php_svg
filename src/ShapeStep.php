@@ -13,6 +13,7 @@ use UnexpectedValueException;
 */
 class ShapeStep
 {
+    /** @var string[] */
     protected array $argSequence;
     protected int $argCount;
     protected bool $absolute;
@@ -40,7 +41,7 @@ class ShapeStep
 
         if ($this->argCount > static::$expectedArgCount) {
             $stepPrev = $this->type . implode(' ', array_slice($this->argSequence, 0, $this->argCount - static::$expectedArgCount));
-            $this->previous = new static($stepPrev, $previous);
+            $this->previous = new static($stepPrev, $previous);//@phpstan-ignore-line
             $this->argSequence = array_slice($this->argSequence, -static::$expectedArgCount);
             $this->argCount = count($this->argSequence);
             $this->step = $this->type . implode(' ', $this->argSequence);

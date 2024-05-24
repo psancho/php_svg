@@ -12,13 +12,13 @@ class Point
 {
     public function __construct(public float|int $x = 0, public float|int $y = 0) {}
 
-    public function substract(self $refPoint): static
+    public function substract(self $refPoint): self
     {
-        return new static($this->x - $refPoint->x, $this->y - $refPoint->y);
+        return new self($this->x - $refPoint->x, $this->y - $refPoint->y);
     }
 
-    public function add(self $refPoint): static
+    public function add(self $refPoint): self
     {
-        return new static($this->x + $refPoint->x, $this->y + $refPoint->y);
+        return new self($this->x + $refPoint->x, $this->y + $refPoint->y);
     }
 }

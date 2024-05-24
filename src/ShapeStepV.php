@@ -20,7 +20,8 @@ class ShapeStepV extends ShapeStep
 
     public function getFinalPoint(): Point
     {
-        $x = $this->absolute ? $this->previous->end->x : 0;
+        $x = $this->absolute ? $this->previous?->end->x : 0;
+        assert(is_int($x) || is_float($x));
         return new Point(
             $x,
             self::strToNumber($this->argSequence[static::$indexEndY])

@@ -23,18 +23,19 @@ use Psancho\SvgTools\ShapeStepZ;
 */
 class Shape implements Countable
 {
-    protected $steps;
+    /** @var ShapeStep[] */
+    protected array $steps;
 
     public function __construct(string $pattern = '')
     {
         $matches = [];
-        $this->steps = [];
         $canonicPattern = static::canonize($pattern);
         preg_match_all('/[a-zA-Z][^a-zA-Z]*/', $canonicPattern, $matches);
         $step = null;
         foreach ($matches[0] as $patternStep) {
             $step = static::buildStep($patternStep, $step);
         }
+        assert(!is_null($step));
         $this->steps = [$step];
         while ($step = $step->previous) {
             array_unshift($this->steps, $step);
@@ -51,51 +52,38 @@ class Shape implements Countable
         ], [
             ' ',
             '$1',
-            '$1',
             '',
-        ], $pattern);
+        ], $pattern) ?: '';
     }
 
-    protected static function buildStep(string $patternStep = '', $prev = null): ShapeStep
+    protected static function buildStep(string $patternStep = '', ?ShapeStep $prev = null): ShapeStep
     {
         $stepType = substr($patternStep, 0, 1);
         switch (strtolower($stepType)) {
         case 'a':
             return new ShapeStepA($patternStep, $prev);
-            break;
         case 'c':
             return new ShapeStepC($patternStep, $prev);
-            break;
         case 'h':
             return new ShapeStepH($patternStep, $prev);
-            break;
         case 'l':
             return new ShapeStepL($patternStep, $prev);
-            break;
         case 'm':
             return new ShapeStepM($patternStep, $prev);
-            break;
         case 'q':
             return new ShapeStepQ($patternStep, $prev);
-            break;
         case 's':
             return new ShapeStepS($patternStep, $prev);
-            break;
         case 't':
             return new ShapeStepT($patternStep, $prev);
-            break;
         case 'v':
             return new ShapeStepV($patternStep, $prev);
-            break;
         case 'z':
             return new ShapeStepZ($patternStep, $prev);
-            break;
 
         default:
-        return new ShapeStepA($patternStep, $prev);
-        break;
+            return new ShapeStepA($patternStep, $prev);
         }
-        return new ShapeStep($patternStep, $prev);
     }
 
     public function count(): int
